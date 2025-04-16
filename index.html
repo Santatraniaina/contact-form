@@ -6,6 +6,9 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 	<title>Frontend Mentor | Contact form</title>
 	<link rel="stylesheet" href="style.css"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
 </head>
 
 <body class="container">
@@ -35,7 +38,7 @@
 
 			<div class="input-group">
 				<div class="form-label">Query Type</div>
-				<div class="form-input">
+				<div class="form-input-radio">
 					<div class="input-radio">
 						<input type="radio" name="query-type" id="general-enquiry" value="general"/>
 						<label for="general-enquiry">General Enquiry</label>
@@ -57,8 +60,8 @@
 			</div>
 
 			<div class="input-group">
-				<input class="form-input" type="checkbox" name="consent" id="consent"/>
 				<label class="form-label" for="consent">
+					<input class="form-input" type="checkbox" name="consent" id="consent"/>
 					I consent to being contacted by the team
 				</label>
 				<span class="form-error-message">
@@ -73,7 +76,7 @@
 	</form>
 	<div class="attribution">
 		Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-		Coded by <a href="#">Your Name Here</a>.
+		Coded by <a href="#">Person</a>.
 	</div>
 </body>
 </html>
