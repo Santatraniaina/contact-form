@@ -106,13 +106,14 @@ input, textarea, button{
 
 .form-input-radio{
     display: flex;
-    gap: 1rem; /* If you change this */
+    gap: .5rem; /* If you change this */
     flex-wrap: wrap;
+    justify-content: space-between;
     align-items: start;
 }
 
 .input-radio{
-    width: calc(50% - 1rem); /* Then change this too */
+    width: calc(50% - .5rem); /* Then change this too */
     display: flex;
     align-items: center;
     gap: 0.5rem;
