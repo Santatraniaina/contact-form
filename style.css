@@ -82,9 +82,9 @@ textarea {
         cursor: pointer;
     }
 
-    /*&:invalid {*/
-    /*    border: 1px solid var(--red);*/
-    /*}*/
+    &:not(:focus):invalid {
+        border: 1px solid var(--red);
+    }
 }
 
 .form-error-message{
@@ -100,6 +100,37 @@ textarea {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.success-content {
+    position: absolute;
+    opacity: 0.9;
+    top: 0;
+    left: auto;
+    right: auto;
+    z-index: 9999;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+
+    background-color: var(--grey-900);
+    color: white;
+    padding: 1.25rem;
+    border-radius: .75rem;
+
+    .success-title {
+        margin-bottom: .5rem;
+
+        &::before {
+            content: url("./assets/images/icon-success-check.svg");
+            margin-right: .5rem;
+            vertical-align: middle;
+        }
+    }
+}
+
+.container > .form:valid + .success-content {
+    transform: translateY(100%);
+    top: 1.25rem;
 }
 
 .form{
@@ -124,6 +155,12 @@ textarea {
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.input-group:has(.form-input:not(:focus):invalid) {
+    .form-error-message{
+        display: block;
+    }
 }
 
 .input-half{

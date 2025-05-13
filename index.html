@@ -12,7 +12,14 @@
 </head>
 
 <body class="container">
-	<form class="form">
+	<div class="success-content">
+		<h4 class="success-title">Message sent!</h4>
+		<p class="success-message">
+			Thanks for completing the form. We’ll be in touch soon.
+		</p>
+	</div>
+
+	<form class="form" action="">
 		<h1 class="form-title">Contact Us</h1>
 
 		<div class="form-body">
@@ -61,7 +68,7 @@
 
 			<div class="input-group">
 				<label class="form-label" for="consent">
-					<input class="form-input" type="checkbox" name="consent" id="consent"/>
+					<input class="form-input" type="checkbox" name="consent" id="consent" required/>
 					I consent to being contacted by the team
 				</label>
 				<span class="form-error-message">
