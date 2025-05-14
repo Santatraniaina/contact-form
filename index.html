@@ -19,33 +19,54 @@
 		</p>
 	</div>
 
-	<form class="form" action="">
+	<form class="form" action="#" novalidate>
 		<h1 class="form-title">Contact Us</h1>
 
 		<div class="form-body">
 			<div class="input-group input-half">
 				<label class="form-label" for="first-name">First Name</label>
-				<input class="form-input" type="text" id="first-name" name="first-name" required>
-				<span class="form-error-message">This field is required</span>
+				<input
+					class="form-input"
+					type="text"
+					id="first-name"
+					name="first-name"
+					data-error="This field is required"
+					required
+				/>
+				<!--<span class="form-error-message" data-error="first-name">This field is required</span>-->
 			</div>
 
 			<div class="input-group input-half">
 				<label class="form-label" for="last-name">Last Name</label>
-				<input class="form-input" type="text" id="last-name" name="first-name" required>
-				<span class="form-error-message">This field is required</span>
+				<input
+					class="form-input"
+					type="text"
+					id="last-name"
+					name="first-name"
+					data-error="This field is required"
+					required
+				/>
+				<!--<span class="form-error-message" data-error="last-name">This field is required</span>-->
 			</div>
 
 			<div class="input-group">
 				<label class="form-label" for="email-address">Email Address</label>
-				<input class="form-input" type="email" id="email-address" name="email-address" required>
-				<span class="form-error-message">
+				<input
+					class="form-input"
+					type="email"
+					id="email-address"
+					name="email-address"
+					data-error="Please enter a valid email address"
+					required
+				/>
+				<!--<span class="form-error-message" data-error="email-address">
 					Please enter a valid email address
-				</span>
+				</span>-->
 			</div>
 
 			<div class="input-group">
 				<div class="form-label">Query Type</div>
-				<div class="form-input-radio">
+				<div class="form-input-radio" data-error="Please select a query type">
 					<div class="input-radio">
 						<input type="radio" name="query-type" id="general-enquiry" value="general"/>
 						<label for="general-enquiry">General Enquiry</label>
@@ -55,25 +76,38 @@
 						<label for="support-request">Support Request</label>
 					</div>
 				</div>
-				<span class="form-error-message">
+				<!--<span class="form-error-message" data-error="query-type">
 					Please select a query type
-				</span>
+				</span>-->
 			</div>
 
 			<div class="input-group">
 				<label class="form-label" for="message">Message</label>
-				<textarea class="form-input" id="message" name="message" required></textarea>
-				<span class="form-error-message">This field is required</span>
+				<textarea
+					class="form-input"
+					id="message"
+					name="message"
+					data-error="This field is required"
+					required
+				></textarea>
+				<!--<span class="form-error-message" data-error="message">This field is required</span>-->
 			</div>
 
 			<div class="input-group">
 				<label class="form-label" for="consent">
-					<input class="form-input" type="checkbox" name="consent" id="consent" required/>
+					<input
+						class="form-input"
+						type="checkbox"
+						name="consent"
+						id="consent"
+						data-error="To submit this form, please consent to being contacted"
+						required
+					/>
 					I consent to being contacted by the team
 				</label>
-				<span class="form-error-message">
+				<!--<span class="form-error-message" data-error="consent">
 					To submit this form, please consent to being contacted
-				</span>
+				</span>-->
 			</div>
 		</div>
 

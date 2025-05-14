@@ -37,7 +37,6 @@ body{
     background-color: var(--green-200);
 
     min-height: 100vh;
-    position: relative;
 }
 
 input, textarea, button{
@@ -62,10 +61,6 @@ textarea {
     }
 }
 
-.form-error-message {
-    display: none;
-}
-
 .form-input{
     border: 1px solid var(--grey-500);
     padding: 0.75rem;
@@ -82,9 +77,9 @@ textarea {
         cursor: pointer;
     }
 
-    &:not(:focus):invalid {
-        border: 1px solid var(--red);
-    }
+    /*&:required:focus:invalid {*/
+    /*    border: 1px solid var(--red);*/
+    /*}*/
 }
 
 .form-error-message{
@@ -100,6 +95,7 @@ textarea {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1.5rem;
 }
 
 .success-content {
@@ -126,6 +122,11 @@ textarea {
             vertical-align: middle;
         }
     }
+
+    &.active {
+        transform: translateY(0);
+        top: 1.25rem;
+    }
 }
 
 .container > .form:valid + .success-content {
@@ -142,6 +143,7 @@ textarea {
     border-radius: 1rem;
     background-color: var(--white);
     margin: 1rem;
+    /*z-index: 1000;*/
 }
 
 .form-body{
@@ -155,11 +157,9 @@ textarea {
     width: 100%;
     display: flex;
     flex-direction: column;
-}
 
-.input-group:has(.form-input:not(:focus):invalid) {
-    .form-error-message{
-        display: block;
+    &:has(.form-error-message) > .form-input {
+        border: 1px solid var(--red);
     }
 }
 
@@ -235,6 +235,21 @@ input#consent{
     }
 }
 
+/* Credit */
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    position: relative;
+    bottom: .5rem;
+    left: auto;
+    right: auto;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+
 @media (max-width: 450px) {
     body{
         background-color: var(--white);
@@ -245,19 +260,4 @@ input#consent{
         width: auto;
         flex-grow: 1;
     }
-}
-
-
-/* Credit */
-.attribution {
-    font-size: 11px;
-    text-align: center;
-    position: fixed;
-    bottom: 1rem;
-    left: 0;
-    right: 0;
-}
-
-.attribution a {
-    color: hsl(228, 45%, 44%);
 }
