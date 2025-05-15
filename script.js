@@ -6,7 +6,10 @@ const success = document.querySelector('.success-content');
 
 function toggleRadio(event) {
     const target = event.target;
-    console.log(target);
+    const radio = target.querySelector('input[type="radio"]');
+    if (radio) {
+        radio.checked = true;
+    }
 }
 
 function displayError(parent, input) {
@@ -58,7 +61,7 @@ function submitForm(event) {
     });
 
     if (errorCount > 0) {
-        console.log(`Form has ${errorCount} errors`);
+        console.log(`Form has ${errorCount} required fields that are empty`);
     } else {
         success.classList.add('active');
         setTimeout(() => {
