@@ -1,78 +1,58 @@
-const inputRadios = document.querySelectorAll('.input-radio');
-const inputGroups= document.querySelectorAll('.input-group');
 const form = document.querySelector('.form');
 const success = document.querySelector('.success-content');
 
-
-function toggleRadio(event) {
-    const target = event.target;
-    const radio = target.querySelector('input[type="radio"]');
-    if (radio) {
-        radio.checked = true;
-    }
-}
-
 function displayError(parent, input) {
-    const errorMessage = input.dataset.error;
     const errorElement = document.createElement('span');
     errorElement.classList.add('form-error-message');
-    errorElement.textContent = errorMessage;
+    errorElement.textContent = input.dataset.error;
     parent.appendChild(errorElement);
     return 1;
 }
 
-function clearError() {
-    inputGroups.forEach(inputGroup => {
-        const errorElement = inputGroup.querySelector('.form-error-message');
-        if (errorElement) {
-            errorElement.remove();
-        }
-    })
+function clearErrors() {
+    document.querySelectorAll('.form-error-message').forEach(error => error.remove());
+}
+
+function validateInput(inputGroup) {
+    const input = inputGroup.querySelector('input:not([type="radio"])');
+    const textarea = inputGroup.querySelector('textarea');
+    const radios = inputGroup.querySelectorAll('input[type="radio"]');
+
+    if (
+        input &&
+        input.required &&
+        ((input.type === 'checkbox' && !input.checked) ||!input.value.trim())
+    ) {
+        return displayError(inputGroup, input);
+    }
+    if (textarea && textarea.required && !textarea.value.trim()) {
+        return displayError(inputGroup, textarea);
+    }
+    if (radios.length && !Array.from(radios).some(radio => radio.checked)) {
+        return displayError(inputGroup, inputGroup.querySelector(".form-input-radio"));
+    }
+    return 0;
 }
 
 function submitForm(event) {
     event.preventDefault();
-    clearError();
+    clearErrors();
 
-    const formData = new FormData(this);
+    const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     let errorCount = 0;
 
-    inputGroups.forEach(inputGroup => {
-        const input = inputGroup.querySelector('input:not([type="radio"])');
-        const textarea = inputGroup.querySelector('textarea');
-        const radios = inputGroup.querySelectorAll('input[type="radio"]');
-
-        // Input validation
-        if (input && input.required && (input.value === '' || input.value === undefined || (input.type === "checkbox" && !input.checked))) {
-            errorCount += displayError(inputGroup, input);
-        }
-        // Textarea validation
-        if (textarea && textarea.required && (textarea.value === '' || textarea.value === undefined)) {
-            errorCount += displayError(inputGroup, textarea);
-        }
-        // Radio validation
-        if (radios.length > 0) {
-            const checkedRadio = Array.from(radios).some(radio => radio.checked);
-            if (!checkedRadio) {
-                errorCount += displayError(inputGroup, inputGroup.querySelector(".form-input-radio"));
-            }
-        }
+    document.querySelectorAll('.input-group').forEach(inputGroup => {
+        errorCount += validateInput(inputGroup);
     });
 
-    if (errorCount > 0) {
+    if (errorCount) {
         console.log(`Form has ${errorCount} required fields that are empty`);
     } else {
         success.classList.add('active');
-        setTimeout(() => {
-            success.classList.remove('active');
-        }, 3000);
-        console.log('Form submitted');
+        setTimeout(() => success.classList.remove('active'), 3000);
+        console.log('Form submitted', data);
     }
-
-    console.log(data);
 }
 
-
-inputRadios.forEach(inputRadio => inputRadio.addEventListener('click', toggleRadio));
 form.addEventListener('submit', submitForm);
