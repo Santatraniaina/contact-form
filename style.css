@@ -229,6 +229,10 @@ input#consent{
     margin-right: 0.75rem;
 }
 
+.consent {
+    margin: .75rem 0;
+}
+
 
 .submit-button{
     border: none;

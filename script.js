@@ -49,6 +49,7 @@ function submitForm(event) {
     if (errorCount) {
         console.log(`Form has ${errorCount} required fields that are empty`);
     } else {
+        form.reset();
         success.classList.add('active');
         setTimeout(() => success.classList.remove('active'), 3000);
         console.log('Form submitted', data);
